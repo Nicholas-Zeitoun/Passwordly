@@ -6,6 +6,11 @@ rails new \
   --webpack \
   -m https://raw.githubusercontent.com/lewagon/rails-templates/master/devise.rb \
 rails webpacker:install
-rails generate simple_form:install
+yarn add bootstrap
+yarn add popper.js jquery
 rails generate simple_form:install --bootstrap
+rails generate devise:install
+rails generate devise User
+rails g devise:views
+rails db:migrate
 rails db:create
