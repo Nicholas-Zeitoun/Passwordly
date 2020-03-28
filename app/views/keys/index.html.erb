@@ -1,5 +1,23 @@
 <h1>KeysController#index</h1>
 <p>Find me in app/views/keys_controller/index.html.erb</p>
+
+<%= simple_form_for @key do |f| %>
+  <%= f.input :name %>
+  <%= f.input :account %>
+  <%= f.input :password %>
+  <%= f.input :url %>
+  <%= f.submit 'submit', class: "btn btn-primary text-white" %>
+<% end %>
+
 <% @keys.each do |key| %>
-  <%= key.name %>
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">
+        <h5><%= key.name %></h5>
+      </div>
+      <%= key.account %>
+      <%= key.password %>
+      <%= key.url %>
+    </div>
+  </div>
 <% end %>
