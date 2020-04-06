@@ -1,23 +1,79 @@
-<h1>KeysController#index</h1>
-<p>Find me in app/views/keys_controller/index.html.erb</p>
 
-<%= simple_form_for @key do |f| %>
-  <%= f.input :name %>
-  <%= f.input :account %>
-  <%= f.input :password %>
-  <%= f.input :url %>
-  <%= f.submit 'submit', class: "btn btn-primary text-white" %>
-<% end %>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#exampleModal">
+  Add Passkey
+</button>
 
-<% @keys.each do |key| %>
-  <div class="card">
-    <div class="card-body">
-      <div class="card-title">
-        <h5><%= key.name %></h5>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <%= key.account %>
-      <%= key.password %>
-      <%= key.url %>
+      <div class="modal-body">
+        <%= simple_form_for @key do |f| %>
+          <%= f.input :name %>
+          <%= f.input :account %>
+          <%= f.input :password %>
+          <%= f.input :url %>
+          <%= f.submit 'submit', class: "btn btn-primary text-white" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
+</div>
+
+
+
+<% @keys.each do |key| %>
+  <% if key.user == current_user %>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="card-title">
+          <h5><%= key.name %></h5>
+        </div>
+        <p><%= key.account %></p>
+        <% pass = "•" * key.password.length %>
+        <p><%= pass %></p>
+        <p type="password"><%= key.password %></p>
+        <% key_copy_function = "myFunction("+"\"#{key.password}\""+")" %>
+        <%= key_copy_function %>
+        <button class="btn btn-secondary" onclick="<%= key_copy_function %>">Copy text</button>
+        <p><a href="https://<%= key.url %>" target="_blank"><%= key.url %></a></p>
+        <p class="btn btn-primary"><%= link_to "Edit", edit_key_path(key), class: "text-white" %></p>
+        <p class="btn btn-danger"><%= link_to "Delete", edit_key_path(key), class: "text-white" %></p>
+      </div>
+    </div>
+  <% else %>
+  <% end %>
+
 <% end %>
+
+<script>
+function myFunction(key) {
+  console.log(key);
+  // Create new element
+   var el = document.createElement('textarea');
+   // Set value (string to be copied)
+   el.value = key;
+   // Set non-editable to avoid focus and move outside of view
+   el.setAttribute('readonly', '');
+   el.style = {position: 'absolute', left: '-9999px'};
+   document.body.appendChild(el);
+   // Select text inside element
+   el.select();
+   // Copy text to clipboard
+   document.execCommand('copy');
+   // Remove temporary element
+   document.body.removeChild(el);
+  alert("Password copied to clipboard!");
+}
+</script>

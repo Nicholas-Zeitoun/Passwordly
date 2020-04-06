@@ -1,0 +1,8 @@
+<h1>Edit your Key</h1>
+<%= simple_form_for @key do |f| %>
+  <%= f.input :name %>
+  <%= f.input :account %>
+  <%= f.input :password %>
+  <%= f.input :url %>
+  <%= f.submit 'submit', class: "btn btn-primary text-white" %>
+<% end %>
