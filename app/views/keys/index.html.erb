@@ -33,29 +33,7 @@
 
 
 
-<% @keys.each do |key| %>
-  <% if key.user == current_user %>
-    <div class="card mt-3">
-      <div class="card-body">
-        <div class="card-title">
-          <h5><%= key.name %></h5>
-        </div>
-        <p><%= key.account %></p>
-        <% pass = "•" * key.password.length %>
-        <p><%= pass %></p>
-        <p type="password"><%= key.password %></p>
-        <% key_copy_function = "myFunction("+"\"#{key.password}\""+")" %>
-        <%= key_copy_function %>
-        <button class="btn btn-secondary" onclick="<%= key_copy_function %>">Copy text</button>
-        <p><a href="https://<%= key.url %>" target="_blank"><%= key.url %></a></p>
-        <p class="btn btn-primary"><%= link_to "Edit", edit_key_path(key), class: "text-white" %></p>
-        <p class="btn btn-danger"><%= link_to "Delete", edit_key_path(key), class: "text-white" %></p>
-      </div>
-    </div>
-  <% else %>
-  <% end %>
 
-<% end %>
 
 <script>
 function myFunction(key) {
