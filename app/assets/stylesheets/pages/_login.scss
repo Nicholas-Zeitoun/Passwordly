@@ -25,6 +25,20 @@
   }
 }
 
+.support-links {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition: 0.3s;
+
+  .supp-link {
+    font-family: Nunito;
+    font-weight: 800;
+    font-size: 16px;
+    color: #818181;
+  }
+}
+
 .input-window {
   min-width: 325px;
 }
