@@ -33,3 +33,30 @@
     background-color: #D6B56A;
   }
 }
+
+.modal_body {
+  padding: 35px;
+}
+
+.new_key {
+  .key_name, .key_account, .key_password, .key_url {
+    font-family: Nunito;
+    font-weight: 800;
+    font-size: 24px;
+    color: #818181;
+  }
+}
+
+.key-input {
+  background-color: #E8E8E8 !important;
+  color: #A3A3A3;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  font-family: Nunito !important;
+  line-height: 1.5;
+  transition: 0.3s;
+  &:hover{
+    box-shadow: 0 0 15px rgba(55,55,55,0.2);
+  }
+}
