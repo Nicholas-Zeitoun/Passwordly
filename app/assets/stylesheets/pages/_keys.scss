@@ -3,8 +3,8 @@
   height: 100px;
   width: 200px;
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: 15px;
+  right: 15px;
   transition: 0.3s;
 
   p {
@@ -59,4 +59,15 @@
   &:hover{
     box-shadow: 0 0 15px rgba(55,55,55,0.2);
   }
+}
+
+.passwordly-corners {
+  border-radius: 8px;
+}
+
+//Key cards
+.passwordly-card {
+  background-color: white;
+  max-width: 550px;
+  box-shadow: 0 0 20px rgba(55,55,55,0.1);
 }
