@@ -12,3 +12,38 @@
   width: 180px;
 
 }
+
+.logout-icon {
+  width: 42px;
+  color: #818181;
+}
+
+.dropdown-item {
+  font-family: Nunito;
+  font-weight: 800;
+}
+
+.dropdown-menu {
+  border-style: none;
+  border: 0 !important;
+}
+
+.logout-button {
+  background-color: #D6A06A;
+  margin: 15px;
+  font-family: Nunito;
+  font-weight: 800;
+  font-size: 24px;
+  padding: 10px 35px 10px 35px;
+  color: white;
+  border: none;
+  border-radius: 45px;
+  transition: 0.4s;
+  box-shadow: 5px 0px 20px rgba(0,0,0,0.2);
+  &:hover {
+    opacity: 0.7;
+  }
+  &:focus {
+    outline: none;
+  }
+}
