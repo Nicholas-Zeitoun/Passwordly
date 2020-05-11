@@ -30,17 +30,30 @@
   </div>
 </div>
 
-<div class="container text-center mt-4 mb-4">
+<div class="container d-flex flex-column align-items-center text-center mt-4 mb-4">
+  <!-- Search Bar -->
   <div class="row justify-content-center">
     <%= form_tag keys_path, method: :get, class: "form-inline my-2 my-lg-0" do %>
       <%= text_field_tag :query,
         params[:query],
-        class: "brand-search-bar",
-        placeholder: "Search"%>
+        class: "key-search-bar",
+        placeholder: "Find key..."%>
       <%#= render 'shared/round_button' %>
-      <%= submit_tag "", class: "brand-button" %>
+      <div class="key-button-holder">
+        <!-- Button's underlying image asset -->
+        <div class="brand-button-circle d-flex justify-content-center align-items-center text-white">
+          <i class="fas fa-search"></i>
+        </div>
+        <!-- Overlying link -->
+        <%= submit_tag "", class: "brand-button" %>
+      </div>
+      <%#= submit_tag "", class: "brand-button" %>
     <% end %>
   </div>
+  <!-- Keys -->
+  <% if @keys.count == 0 %>
+    <p>no keys... </p>
+  <% end %>
   <% @keys.each do |key| %>
     <% if key.user == current_user %>
       <div class="card passwordly-card passwordly-corners border-0 mt-3">
