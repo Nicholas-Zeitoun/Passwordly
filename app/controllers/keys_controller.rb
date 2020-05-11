@@ -3,7 +3,12 @@ class KeysController < ApplicationController
 
   def index
     @key = Key.new
-    @keys = Key.all
+    if params[:query].present?
+      @keys = Key.search_full_text(params[:query])
+    else
+      @keys = Key.all
+    end
+    # @keys = Key.all
   end
 
   def new
