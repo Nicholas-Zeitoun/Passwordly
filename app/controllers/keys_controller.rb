@@ -25,6 +25,12 @@ class KeysController < ApplicationController
   def edit
   end
 
+  def destroy
+    @key = Key.find(params[:id])
+    @key.destroy
+    redirect_to root_path
+  end
+
   def update
     if @key.update(key_params)
       redirect_to root_path

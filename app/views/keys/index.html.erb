@@ -30,25 +30,34 @@
   </div>
 </div>
 
-
-<div class="container text-center">
+<div class="container text-center mt-4 mb-4">
   <% @keys.each do |key| %>
     <% if key.user == current_user %>
-      <div class="passwordly-card passwordly-corners mt-3">
+      <div class="card passwordly-card passwordly-corners border-0 mt-3">
         <div class="card-body">
-          <div class="card-title">
-            <h5><%= key.name %></h5>
+
+          <div class="text-left">
+            <div class="card-title">
+              <h5><%= key.name %></h5>
+            </div>
+            <p><i class="fas fa-user-circle"></i> <%= key.account %></p>
+            <% pass = "•" * key.password.length %>
+            <div class="card password-text border-0">
+              <p class="password-text"><i class="fas fa-key"></i> <%= pass %></p>
+              <!-- <p type="password"><%= key.password %></p> -->
+              <% key_copy_function = "myFunction("+"\"#{key.password}\""+")" %>
+              <% key_copy_function %>
+              <a class="stretched-link" onclick="<%= key_copy_function %>"></a>
+            </div>
+            <div class="link-text card border-0">
+              <a href="https://<%= key.url %>" target="_blank"><i class="fas fa-link"></i> <%= key.url %></a>
+            </div>
           </div>
-          <p><%= key.account %></p>
-          <% pass = "•" * key.password.length %>
-          <p><%= pass %></p>
-          <!-- <p type="password"><%= key.password %></p> -->
-          <% key_copy_function = "myFunction("+"\"#{key.password}\""+")" %>
-          <% key_copy_function %>
-          <button class="btn btn-secondary" onclick="<%= key_copy_function %>">Copy text</button>
-          <p><a href="https://<%= key.url %>" target="_blank"><%= key.url %></a></p>
-          <p class="btn btn-primary"><%= link_to "Edit", edit_key_path(key), class: "text-white" %></p>
-          <p class="btn btn-danger"><%= link_to "Delete", edit_key_path(key), class: "text-white" %></p>
+          <div class="d-flex justify-content-end key-card-links">
+            <h5 class="edit-link"><%= link_to "Edit", edit_key_path(key) %></h5>
+            <h5 class="delete-link ml-2"><%= link_to "Delete", key_path(key), method: :delete %></h5>
+          </div>
+
         </div>
       </div>
     <% else %>
