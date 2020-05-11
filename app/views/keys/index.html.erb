@@ -52,7 +52,9 @@
   </div>
   <!-- Keys -->
   <% if @keys.count == 0 %>
-    <p>no keys... </p>
+  <div class="mt-4">
+    <p>No keys found... </p>
+  </div>
   <% end %>
   <% @keys.each do |key| %>
     <% if key.user == current_user %>
@@ -73,7 +75,7 @@
               <a class="stretched-link" onclick="<%= key_copy_function %>"></a>
             </div>
             <div class="link-text card border-0">
-              <a href="https://<%= key.url %>" target="_blank"><i class="fas fa-link"></i> <%= key.url %></a>
+              <a href="https://<%= key.url %>" target="_blank"><i class="fas fa-link"></i> www.<%= key.name.downcase.gsub(/\s+/, "") %>.com</a>
             </div>
           </div>
           <div class="d-flex justify-content-end key-card-links">
