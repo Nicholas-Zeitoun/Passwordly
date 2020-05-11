@@ -1,8 +1,19 @@
-<h1>Edit your Key</h1>
-<%= simple_form_for @key do |f| %>
-  <%= f.input :name %>
-  <%= f.input :account %>
-  <%= f.input :password %>
-  <%= f.input :url %>
-  <%= f.submit 'submit', class: "btn btn-primary text-white" %>
-<% end %>
+<div class="container">
+  <div class="d-flex align-items-center flex-column">
+    <div class="link-box mt-3">
+      <p class="m-0"><%= link_to '< back', root_path %></p>
+    </div>
+    <div class="passwordly-card passwordly-corners mt-3 p-4">
+      <%= simple_form_for @key do |f| %>
+        <%= f.input :name, input_html: { class: 'key-input' } %>
+        <%= f.input :account, input_html: { class: 'key-input' } %>
+        <%= f.input :password, input_html: { class: 'key-input' } %>
+        <%= f.input :url, input_html: { class: 'key-input' } %>
+        <div class="text-center">
+          <%= f.submit 'Update', class: "passordly-button info text-white" %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

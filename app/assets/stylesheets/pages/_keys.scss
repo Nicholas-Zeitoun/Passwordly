@@ -38,8 +38,8 @@
   padding: 35px;
 }
 
-.new_key {
-  .key_name, .key_account, .key_password, .key_url {
+.new_key, .edit_key {
+  .key_name, .key_account, .key_password, .key_url, {
     font-family: Nunito;
     font-weight: 800;
     font-size: 24px;
@@ -70,4 +70,27 @@
   background-color: white;
   max-width: 550px;
   box-shadow: 0 0 20px rgba(55,55,55,0.1);
+}
+
+.link-box {
+  max-width: 550px;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+  .passwordly-card, .link-box {
+    min-width: 90%;
+  }
+
+  .add-key {
+    display: none;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  //Key cards
+  .passwordly-card, .link-box {
+    min-width: 550px;
+  }
 }

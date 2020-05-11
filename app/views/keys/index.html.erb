@@ -1,4 +1,4 @@
-<div class="add-key d-flex align-items-center">
+<div class="add-key d-sm-none d-md-flex align-items-center">
   <p class="m-0 mr-3">Add Passkey</p>
   <button type="button" class="add-key-button" data-toggle="modal" data-target="#exampleModal">
     <i class="fas fa-plus"></i>
@@ -42,9 +42,9 @@
           <p><%= key.account %></p>
           <% pass = "•" * key.password.length %>
           <p><%= pass %></p>
-          <p type="password"><%= key.password %></p>
+          <!-- <p type="password"><%= key.password %></p> -->
           <% key_copy_function = "myFunction("+"\"#{key.password}\""+")" %>
-          <%= key_copy_function %>
+          <% key_copy_function %>
           <button class="btn btn-secondary" onclick="<%= key_copy_function %>">Copy text</button>
           <p><a href="https://<%= key.url %>" target="_blank"><%= key.url %></a></p>
           <p class="btn btn-primary"><%= link_to "Edit", edit_key_path(key), class: "text-white" %></p>
